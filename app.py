@@ -5,7 +5,7 @@ import numpy as np
 from sklearn.ensemble import RandomForestClassifier
 import joblib
 
-st.set_page_config(page_title="Resiko Diabetes", layout="wide")
+st.set_page_config(page_title="Resiko Diabetes")
 
 @st.cache_resource
 def load_model():
@@ -50,10 +50,10 @@ input_data = pd.DataFrame({
 
 st.subheader("Hasil Analisis")
 
-if st.button("Lakukan Prediksi Risiko", type="primary", use_container_width=True):
+if st.button("Prediksi Resiko Diabetes", type="primary"):
     prediction = model.predict(input_data)
     
     if prediction[0] == 1:
-        st.error("Peringatan: Pasien memiliki risiko TINGGI terkena diabetes. Disarankan untuk segera melakukan pemeriksaan medis lebih lanjut.")
+        st.error("Pasien memiliki risiko tinggi terkena diabetes.")
     else:
-        st.success("Aman: Pasien memiliki risiko RENDAH terkena diabetes. Tetap pertahankan gaya hidup sehat.")
+        st.success("Pasien memiliki risiko rendah terkena diabetes.")
